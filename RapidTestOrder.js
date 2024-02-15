@@ -11,8 +11,8 @@ class RapidTestOrder {
       SIZE: () =>{
         let aReturn = [];
         this.stateCur = this.OrderState.RESERVING;
-        aReturn.push("What toppings would you like?"); 
-        aReturn.push("We have Canadian and Vegitarian");
+        aReturn.push("What coffee would you like?"); 
+        aReturn.push("We have Iced Latte and Cappuccino.");
         return aReturn;
       },
       RESERVING: (sInput) => {
