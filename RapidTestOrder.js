@@ -4,8 +4,8 @@ class RapidTestOrder {
       WELCOMING: () => {
         let aReturn = [];
         this.stateCur = this.OrderState.SIZE;
-        aReturn.push("Welcome to Fratello's.");
-        aReturn.push("What size of the best pizza in Waterloo would you like?");
+        aReturn.push("Welcome to Tim Hortons.");
+        aReturn.push("What would you like to have today?");
         return aReturn;
       },
       SIZE: () =>{
