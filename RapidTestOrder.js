@@ -3,30 +3,37 @@ class RapidTestOrder {
     this.OrderState = {
       WELCOMING: () => {
         let aReturn = [];
-        this.stateCur = this.OrderState.SIZE;
+        this.stateCur = this.OrderState.CHOICE;
         aReturn.push("Welcome to Tim Hortons.");
-        aReturn.push("What would you like to have today?");
+        aReturn.push("Would you like Coffee or Tea today?");
+        return aReturn;
+      },
+      CHOICE: () =>{
+        let aReturn = [];
+        this.stateCur = this.OrderState.SIZE;
+        aReturn.push("What size would you like? We have small, medium, and large.");
         return aReturn;
       },
       SIZE: () =>{
         let aReturn = [];
-        this.stateCur = this.OrderState.RESERVING;
-        aReturn.push("What coffee would you like?"); 
-        aReturn.push("We have Iced Latte and Cappuccino.");
+        this.stateCur = this.OrderState.TOPPING;
+        aReturn.push("What toppings would you like? We have whipped cream and chocolate shavings.");
         return aReturn;
       },
-      RESERVING: (sInput) => {
+      TOPPING: () => {
+        let aReturn = [];
+        this.stateCur = this.OrderState.UPSELL;
+        aReturn.push("Would you like to add a cream cheese bagel to your order for only $2.50? Yes or No");
+        return aReturn;
+      },
+      UPSELL: (sInput) => {
         let aReturn = [];
         this.isDone = true;
         if (sInput.toLowerCase().startsWith('y')) {
-          aReturn.push(`Your rapid test is reserved under the phone number ${this.sFrom}`);
-          let d = new Date();
-          d.setMinutes(d.getMinutes() + 120);
-          aReturn.push(`Please pick it up at 123 Tidy St., Acton before ${d.toTimeString()}`);
-        } else {
-          aReturn.push("Thanks for trying our reservation system");
-          aReturn.push("Maybe next time")
+          aReturn.push("You've added a cream cheese bagel to your order.");
         }
+        aReturn.push("Thank you for your order at Tim Hortons.");
+        aReturn.push("Please proceed to the pickup counter.");
         return aReturn;
       }
     };
@@ -43,4 +50,4 @@ class RapidTestOrder {
   }
 }
 
-export { RapidTestOrder }
+export { RapidTestOrder };
